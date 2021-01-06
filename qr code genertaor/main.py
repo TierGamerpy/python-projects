@@ -1,11 +1,48 @@
 from tkinter import *
 from tkinter import messagebox
+import pyqrcode
 
 root = Tk()
 root.geometry('570x400')
 root.title('Qr Code Generator')
 root.configure(bg='blue')
 root.wm_iconbitmap('C:\\Users\\adity\\Desktop\\python projects\\qr code genertaor\\Martz90-Circle-Qr-code.ico')
+#########################################################################functions
+
+def Generate_Qr():
+    Qr_Name = Qr_Name_Entry_Box.get()
+    Qr_Id = Qr_Id_Entry_Box.get()
+    Qr_Message = Qr_Message_Entry_Box.get()
+    # print(Qr_Name,Qr_Id,Qr_Message)
+    Message_Qr = 'Name : ' +Qr_Name+'\n'+'Id : '+Qr_Id+'\n'+'Qr_Message : '+Qr_Message 
+    # print(Message_Qr)
+    url = pyqrcode.create(Message_Qr)
+    pp = r'C:\Users\adity\Desktop\python projects\qr code genertaor\qr codes'
+    cc = f'{}\{}{}.png'.format(pp,Qr_Id,Qr_Name)
+    li = os.listdir(pp)
+    if ('{}{}.png'.format(Qr_Id,Qr_Name) in li):
+        messagebox.showinfo('Notification','Pls Choose Another Id Or Name..')
+    else:
+        url.png(cc,scale=5,)#module_color=(0,25,255,255),background=(0,255,25,255)
+        mm = 'Qr Code Saved As : '+Qr_Id+Qr_Name+'.png'
+        Qr_Notification_Message_Label.configure(text=mm)
+        res = messagebox.askyesno('Notification','Qr Code Is Generated And Want To See It Then Yes :')
+        if(res == True):
+            
+
+
+def Clear_Id_Name():
+    Qr_Id_Entry_Box.delete(0,'end')
+    Qr_Message_Entry_Box.delete(0,'end')
+    Qr_Name_Entry_Box.delete(0,'end')
+    Qr_Notification_Message_Label.configure(text='')
+
+def Quit_root():
+    res = messagebox.askokcancel('Notification','Are You Sure You Want To Quit ?')
+    if res==True:
+        root.destroy()
+    else:
+        pass
 
 ####################################################################### labels
 
@@ -55,20 +92,45 @@ Quit_root_image = Quit_root_image.subsample(2,2)
 
 Generate_Qrimage_Button = Button(master=root,text='Generate',width=100,font=('times',10,'bold'),
                             bd=10,activebackground='blue',bg='powder blue',image=Generate_Qrimage,
-                            compound=RIGHT)
+                            compound=RIGHT,command=Generate_Qr)
 Generate_Qrimage_Button.place(x=10,y=250)
 
 Clear_Id_Name_Button = Button(master=root,text='Clear',width=100,font=('times',10,'bold'),
                             bd=10,activebackground='blue',bg='powder blue',image=Clear_Id_Nameimage,
-                            compound=RIGHT)
+                            compound=RIGHT,command=Clear_Id_Name)
 Clear_Id_Name_Button.place(x=210,y=250)
 
 Quit_root_Button = Button(master=root,text='Quit',width=100,font=('times',10,'bold'),
                             bd=10,activebackground='blue',bg='powder blue',image=Quit_root_image,
-                            compound=RIGHT)
+                            compound=RIGHT,command=Quit_root)
 Quit_root_Button.place(x=410,y=250)
 
-######################################################################################
+######################################################################################hover effects
+def Generate_Qrimage_ButtonEnter(e):
+    Generate_Qrimage_Button['bg'] = 'purple2'
+def Generate_Qrimage_ButtonLeave(e):
+    Generate_Qrimage_Button['bg'] = 'powder blue'
+
+def Clear_Id_Name_ButtonEnter(e):
+    Clear_Id_Name_Button['bg'] = 'purple2'
+def Clear_Id_Name_ButtonLeave(e):
+    Clear_Id_Name_Button['bg'] = 'powder blue'
+
+def Quit_root_ButtonEnter(e):
+    Quit_root_Button['bg'] = 'purple2'
+def Quit_root_ButtonLeave(e):
+    Quit_root_Button['bg'] = 'powder blue'
+
+Generate_Qrimage_Button.bind('<Enter>',Generate_Qrimage_ButtonEnter)
+Generate_Qrimage_Button.bind('<Leave>',Generate_Qrimage_ButtonLeave)
+
+Clear_Id_Name_Button.bind('<Enter>',Clear_Id_Name_ButtonEnter)
+Clear_Id_Name_Button.bind('<Leave>',Clear_Id_Name_ButtonLeave)
+
+Quit_root_Button.bind('<Enter>',Quit_root_ButtonEnter)
+Quit_root_Button.bind('<Leave>',Quit_root_ButtonLeave)
+
+#######################################################################################
 
 
 root.mainloop()
