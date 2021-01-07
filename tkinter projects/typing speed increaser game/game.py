@@ -6,7 +6,8 @@ root = Tk()
 root.geometry('800x600+400+100')
 root.configure(bg='powder blue')
 root.title('Typind Speed Increaser Game')
-root.iconbitmap('C:\\Users\\adity\\Desktop\\python projects\\typing speed increaser game\\logo.ico')
+root.iconbitmap(r'C:\Users\adity\Desktop\python projects\tkinter projects\typing speed increaser game\logo.ico')
+root.resizable(False, False)
 
 ########################################################################################
 
@@ -22,7 +23,7 @@ words = [
     'banana',
     'orange',
     'buffalo',
-    'laptop'.
+    'laptop',
     'mouse',
     'key',
     'phone',

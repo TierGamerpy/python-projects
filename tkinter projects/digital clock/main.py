@@ -6,7 +6,9 @@ root = Tk()
 root.title('Clock')
 # root.maxsize(width='455',height='490')
 # root.minsize(width='450',height='40')
-root.iconbitmap(r'C:\Users\adity\Desktop\python projects\digital clock\Iconsmind-Outline-Clock-2.ico')
+root.iconbitmap(r'C:\Users\adity\Desktop\python projects\tkinter projects\digital clock\Iconsmind-Outline-Clock-2.ico')
+root.resizable(False, False)
+
 
 def time():
     string = strftime('%H:%M:%S %p')

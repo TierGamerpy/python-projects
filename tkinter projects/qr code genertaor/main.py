@@ -7,7 +7,9 @@ root = Tk()
 root.geometry('570x400')
 root.title('Qr Code Generator')
 root.configure(bg='blue')
-root.wm_iconbitmap('C:\\Users\\adity\\Desktop\\python projects\\qr code genertaor\\Martz90-Circle-Qr-code.ico')
+root.wm_iconbitmap(r'C:\Users\adity\Desktop\python projects\tkinter projects\qr code genertaor\Martz90-Circle-Qr-code.ico')
+root.resizable(False, False)
+
 #########################################################################functions
 
 def Generate_Qr():
