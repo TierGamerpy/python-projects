@@ -6,7 +6,7 @@ screen.title("Aditya's Calculator")
 screen.configure(bg='dark blue')
 screen.maxsize(width='453',height='488')
 screen.minsize(width='362',height='488')
-screen.iconbitmap('C:\\Users\\adity\\Desktop\\python projects\\caluclator\\calc.ico')
+screen.iconbitmap(r'C:\Users\adity\Desktop\python projects\caluclator\calc.ico')
 
 def click(number):
     global operator

@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import pyqrcode
+import os
 
 root = Tk()
 root.geometry('570x400')
@@ -18,7 +19,7 @@ def Generate_Qr():
     # print(Message_Qr)
     url = pyqrcode.create(Message_Qr)
     pp = r'C:\Users\adity\Desktop\python projects\qr code genertaor\qr codes'
-    cc = f'{}\{}{}.png'.format(pp,Qr_Id,Qr_Name)
+    cc = '{}\{}{}.png'.format(pp,Qr_Id,Qr_Name)
     li = os.listdir(pp)
     if ('{}{}.png'.format(Qr_Id,Qr_Name) in li):
         messagebox.showinfo('Notification','Pls Choose Another Id Or Name..')
@@ -28,6 +29,13 @@ def Generate_Qr():
         Qr_Notification_Message_Label.configure(text=mm)
         res = messagebox.askyesno('Notification','Qr Code Is Generated And Want To See It Then Yes :')
         if(res == True):
+            top = Toplevel()
+            top.geometry('400x400')
+            top.configure(bg='white')
+            img = PhotoImage(file=cc)
+            label1 = Label(top,image=img,bg='white')
+            label1.place(x=10,y=10)
+            top.mainloop()
             
 
 
